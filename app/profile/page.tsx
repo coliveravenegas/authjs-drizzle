@@ -1,6 +1,6 @@
 import { auth, signOut } from "@/auth";
 
-export default async function Home() {
+export default async function Profile() {
   const session = await auth()
 
   if (!session?.user) return null
@@ -13,7 +13,7 @@ export default async function Home() {
       <form
         action={async () => {
           "use server"
-          await signOut();
+          await signOut({ redirectTo: "/login" });
         }}
       >
         <button type="submit">Signout</button>
